@@ -1,5 +1,23 @@
-.venv/
-data/
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Dataset files - do not upload
+data/
+*.h5
+*.h5.gz
+*.gz
+
+# Jupyter
 .ipynb_checkpoints/
+
+# Environment and secrets
+.env
