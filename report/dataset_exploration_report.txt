@@ -1,0 +1,88 @@
+
+So2Sat-LCZ42 Dataset Exploration Report
+
+1. Dataset Overview
+The validation split contains 24,119 samples.
+Each sample contains:
+- Sentinel-1 data: 32 x 32 pixels with 8 channels.
+- Sentinel-2 data: 32 x 32 pixels with 10 channels.
+- Ground-truth label: a 17-element one-hot vector.
+
+2. Ground Truth
+Each label vector has 17 positions representing LCZ classes.
+The position containing 1 indicates the class, with indices 0 to 16.
+
+3. Class Distribution
+The largest class is LCZ 8 (Large low-rise), with
+3,395 samples (14.08%).
+
+The smallest class is LCZ E (Bare rock or paved), with
+202 samples (0.84%).
+
+The largest class has about 16.8
+times as many samples as the smallest class, showing class imbalance.
+
+4. Data Quality
+The validation data check found:
+- Sentinel-1: 0 NaN and 0 Inf.
+- Sentinel-2: 0 NaN and 0 Inf.
+- Labels: 0 NaN and 0 Inf.
+
+5. Preprocessing Recommendations
+- Keep the class-index mapping consistent.
+- Fit normalization parameters on training data only.
+- Consider class weighting or balanced sampling during training.
+- Preserve the order of Sentinel-1 and Sentinel-2 channels.
+
+6. Visualization
+The associated graphs show class counts, class percentages,
+class imbalance, and sample Sentinel-1/Sentinel-2 channel patches.
+
+Note: Data-quality results above apply to the validation split checked.
+7. Dataset Splits and Limitations
+
+The validation split contains 24,119 samples, and the testing split contains 24,188 samples. The training split contains 352,366 samples according to the So2Sat-LCZ42 dataset description, but the training file is not currently available locally.
+
+The data-quality checks documented in this report apply to the validation split. Testing-file structure has been verified, but the same full data-quality checks have not been documented for the entire testing split.
+
+8. Preprocessing and Model Inputs
+
+Sentinel-1 and Sentinel-2 are initially processed as separate modalities.
+
+- Sentinel-1 tensor shape: (N, 8, 32, 32)
+- Sentinel-2 tensor shape: (N, 10, 32, 32)
+- Image data type: float32
+- Label format: integer class IDs from 0 to 16
+
+Normalization statistics must be calculated from the training split only and reused for validation and testing. These statistics have not yet been calculated because the training file is unavailable locally. The final modality-fusion strategy must be confirmed with the model team.
+
+9. Channel Information
+
+Sentinel-1 contains 8 channels, and Sentinel-2 contains 10 channels. The dataset's channel definitions and original preprocessing should be documented consistently with the So2Sat-LCZ42 dataset description. Channel-specific statistics have been examined, but normalization parameters have not been finalized.
+
+10. LCZ Class Mapping
+
+The 17 class indices represent LCZ classes 1–10 and A–G. The detailed class mapping is documented in the dataset analysis notebook.
+
+11. Visualization
+
+Six graph files have been generated, including class-distribution charts and representative Sentinel-1/Sentinel-2 patches. The all-class visualization is saved as 06_all_17_lcz_classes.png.
+9. Channel Information
+
+**Sentinel-1 (8 channels)**
+
+The channels represent:
+- VH real and imaginary components.
+- VV real and imaginary components.
+- Refined Lee-filtered VH and VV intensities.
+- Real and imaginary components of the filtered covariance off-diagonal.
+
+**Sentinel-2 (10 bands)**
+
+The spectral bands are B2, B3, B4, B5, B6, B7, B8, B8a, B11, and B12. The six bands B5, B6, B7, B8a, B11, and B12 are upsampled from 20 m to 10 m in the dataset.
+
+Channel-specific statistics were examined on sampled data. The overall validation-data ranges were:
+- Sentinel-1: minimum -645.2098, maximum 5671.2656.
+- Sentinel-2: minimum 0.0001, maximum 2.8005.
+
+These ranges describe the validation data, not normalization parameters. Training-based normalization statistics remain pending.

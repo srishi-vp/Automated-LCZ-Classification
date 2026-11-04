@@ -1,0 +1,18 @@
+Class index,LCZ class,Sample count,Percentage
+0,LCZ 1 - Compact high-rise,256,1.06
+1,LCZ 2 - Compact mid-rise,1254,5.2
+2,LCZ 3 - Compact low-rise,2353,9.76
+3,LCZ 4 - Open high-rise,849,3.52
+4,LCZ 5 - Open mid-rise,757,3.14
+5,LCZ 6 - Open low-rise,1906,7.9
+6,LCZ 7 - Lightweight low-rise,474,1.97
+7,LCZ 8 - Large low-rise,3395,14.08
+8,LCZ 9 - Sparsely built,1914,7.94
+9,LCZ 10 - Heavy industry,860,3.57
+10,LCZ A - Dense trees,2287,9.48
+11,LCZ B - Scattered trees,382,1.58
+12,"LCZ C - Bush, scrub",1202,4.98
+13,LCZ D - Low plants,2747,11.39
+14,LCZ E - Bare rock or paved,202,0.84
+15,LCZ F - Bare soil or sand,672,2.79
+16,LCZ G - Water,2609,10.82
